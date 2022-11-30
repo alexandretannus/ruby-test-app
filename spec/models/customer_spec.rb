@@ -16,5 +16,17 @@ RSpec.describe Customer, type: :model do
     expect(customer.full_name).to start_with("Sr.")
   end
 
+  it 'Create a customer - factory - sobrescrever atributo' do
+    customer = create(:customer, name: "Alexandre")
+
+    expect(customer.full_name).to eq("Sr. Alexandre")
+  end
+
+  it 'Create a customer - factory - alias user' do
+    customer = create(:user)
+
+    expect(customer.full_name).to start_with("Sr.")
+  end
+
   it { expect{ create(:customer) }.to change {Customer.all.size}.by(1) }
 end
