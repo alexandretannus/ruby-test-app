@@ -9,4 +9,10 @@ RSpec.describe Customer, type: :model do
 
     expect(customer.full_name).to eq("Sr. Alexandre Tannus")
   end
+
+  it 'Create a customer - factory' do
+    customer = create(:customer)
+
+    expect(customer.full_name).to eq("Sr. Alexandre")
+  end
 end
