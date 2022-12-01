@@ -48,5 +48,13 @@ RSpec.describe Customer, type: :model do
     expect(customer.full_name).to start_with("Sr.")
   end
 
+  it 'Create a customer - atributo transitorio' do
+    customer = create(:customer_default, upcased: true)
+
+
+    expect(customer.name.upcase).to eq(customer.name)
+    expect(customer.full_name).to start_with("Sr.")
+  end
+
   it { expect{ create(:customer) }.to change {Customer.all.size}.by(1) }
 end
