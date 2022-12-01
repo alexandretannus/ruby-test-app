@@ -40,5 +40,13 @@ RSpec.describe Customer, type: :model do
     expect(customer.vip).to be_truthy
   end
 
+  it 'Create a customer - attributes for' do
+    attrs = attributes_for(:customer)
+    customer = Customer.create(attrs)
+
+    expect(customer.vip).to be_nil
+    expect(customer.full_name).to start_with("Sr.")
+  end
+
   it { expect{ create(:customer) }.to change {Customer.all.size}.by(1) }
 end
