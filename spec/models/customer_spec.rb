@@ -28,5 +28,17 @@ RSpec.describe Customer, type: :model do
     expect(customer.full_name).to start_with("Sr.")
   end
 
+  it 'Create a customer - herança em factory - false vip' do
+    customer = create(:customer_default)
+
+    expect(customer.vip).to be_falsey
+  end
+
+  it 'Create a customer - herança em factory - true vip' do
+    customer = create(:customer_vip)
+
+    expect(customer.vip).to be_truthy
+  end
+
   it { expect{ create(:customer) }.to change {Customer.all.size}.by(1) }
 end
