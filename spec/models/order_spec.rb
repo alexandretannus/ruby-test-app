@@ -12,4 +12,10 @@ RSpec.describe Order, type: :model do
 
     expect(orders.count).to eq(3)
   end
+
+  it 'association has_many' do
+    customer = create(:customer, :with_orders)
+
+    expect(customer.orders.count).to eq(3)
+  end
 end
