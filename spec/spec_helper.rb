@@ -16,7 +16,7 @@
 RSpec.configure do |config|
 
   config.before(:suite) do
-    FactoyBot.lint
+    FactoryBot.lint
   end
 
   # rspec-expectations config goes here. You can use an alternate
