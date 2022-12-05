@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://jsonplaceholder.typicode.com/posts/2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 05 Dec 2022 13:02:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Express
+      X-Ratelimit-Limit:
+      - '1000'
+      X-Ratelimit-Remaining:
+      - '999'
+      X-Ratelimit-Reset:
+      - '1670019131'
+      Vary:
+      - Origin, Accept-Encoding
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - max-age=43200
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"116-jnDuMpjju89+9j7e0BqkdFsVRjs"
+      Via:
+      - 1.1 vegur
+      Cf-Cache-Status:
+      - HIT
+      Age:
+      - '3261'
+      Server-Timing:
+      - cf-q-config;dur=7.0000023697503e-06
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=AASrV%2FZFTOvboKnFi0uMcFPnL9zoj5Rftx4Tf2tMVoNvOEkmkIiwpulFZ5kfeJl1LmDJUuFudNoeuO2XH75w%2FqCBsI5TyIQq%2FKA4L0p9Q8iWitKjP%2FkvfONc5uZ1kcK%2BF0HW9fVAjX1SVBNqlxcE"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 774cfa3759b5a56b-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "userId": 1,
+          "id": 2,
+          "title": "qui est esse",
+          "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+        }
+  recorded_at: Mon, 05 Dec 2022 13:02:38 GMT
+recorded_with: VCR 6.1.0

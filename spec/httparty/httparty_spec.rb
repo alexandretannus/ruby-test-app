@@ -11,4 +11,22 @@ describe 'HTTParty' do
             
         end
     end
+
+    it 'HTTParty - VCR - config metadata', :vcr do
+        response = HTTParty.get('https://jsonplaceholder.typicode.com/posts/2')
+        
+        contentType = response.headers['content-type']
+        
+        expect(contentType).to include('application/json')
+        
+    end
+
+    it 'HTTParty - VCR - config metadata - using existing cassette', vcr: { cassette_name: 'jsonplaceholder/posts' } do
+        response = HTTParty.get('https://jsonplaceholder.typicode.com/posts/2')
+        
+        contentType = response.headers['content-type']
+        
+        expect(contentType).to include('application/json')
+        
+    end
 end
