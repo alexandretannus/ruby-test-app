@@ -36,5 +36,7 @@ module TestApp
       routing_specs: false
     end
 
+    config.time_zone = "Brasilia"
+
   end
 end
