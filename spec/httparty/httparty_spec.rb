@@ -38,4 +38,13 @@ describe 'HTTParty' do
         expect(contentType).to include('application/json')
         
     end
+
+    it 'HTTParty - VCR - config metadata - record new cassette', vcr: { cassette_name: 'jsonplaceholder/posts', :record => :new_episodes } do
+        response = HTTParty.get("https://jsonplaceholder.typicode.com/posts/#{[1,2,3,4,5].sample}")
+        
+        contentType = response.headers['content-type']
+        
+        expect(contentType).to include('application/json')
+        
+    end
 end
