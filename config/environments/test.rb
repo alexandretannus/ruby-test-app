@@ -1,4 +1,6 @@
 Rails.application.configure do
+  #$VERBOSE = nil
+  Warning[:deprecated] = false if Rails.env.test?
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's
