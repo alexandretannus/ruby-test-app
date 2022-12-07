@@ -25,6 +25,7 @@ RSpec.describe CustomersController, type: :request do
 
     describe 'as a logged user' do
         before(:each) do
+            @customer = create(:customer)
             member = create(:member)
             sign_in member
         end
@@ -32,18 +33,27 @@ RSpec.describe CustomersController, type: :request do
         context 'show routes' do
 
             it 'responds a 200 status (ok)' do
-                customer = create(:customer)
-                get customer_path(customer) , params: { :id => customer.id } 
+                get customer_path(@customer) , params: { :id => @customer.id } 
                 expect(response).to have_http_status(:ok)
             end
 
             it 'render show template' do
-                customer = create(:customer)
-                get customer_path(customer) , params: { :id => customer.id } 
+                get customer_path(@customer) , params: { :id => @customer.id } 
                 expect(response).to render_template(:show)
             end
 
         end
+
+        context '#post' do
+            it 'with valid atributes' do
+                expect{
+                    post customers_path, params: { customer: attributes_for(:customer) }
+                }.to change(Customer, :count).by(1)
+                
+            end
+        end
+
+
     end
 
 end
