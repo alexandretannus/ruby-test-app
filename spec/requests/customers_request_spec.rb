@@ -56,6 +56,11 @@ RSpec.describe CustomersController, type: :request do
                 post customers_path, params: { customer: attributes_for(:customer) }
                 expect(flash[:notice]).to match(/successfully created/)
             end
+
+            it 'content-type' do
+                post customers_path, as: :json , params: { customer: attributes_for(:customer) } 
+                expect(response.content_type).to eq('application/json')
+            end
         end
 
 
