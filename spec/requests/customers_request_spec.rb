@@ -49,7 +49,13 @@ RSpec.describe CustomersController, type: :request do
                 expect{
                     post customers_path, params: { customer: attributes_for(:customer) }
                 }.to change(Customer, :count).by(1)
-                
+            end
+
+            it 'with invalid atributes' do
+                customer_attributes = attributes_for(:customer, address: nil)
+                expect{
+                    post customers_path, params: { customer: customer_attributes }
+                }.not_to change(Customer, :count)
             end
 
             it 'flash notice' do
