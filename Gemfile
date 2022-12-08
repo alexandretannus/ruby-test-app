@@ -46,6 +46,7 @@ group :development, :test do
   gem 'vcr'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'rails-controller-testing'
+  gem 'capybara'
 end
 
 group :development do
