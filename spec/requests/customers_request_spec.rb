@@ -50,6 +50,12 @@ RSpec.describe CustomersController, type: :request do
                 expect(response).to render_template(:show)
             end
 
+            it 'JSON Schema' do
+                get "/customers/#{@customer.id}.json"
+                expect(response).to be_successful
+                expect(response).to match_response_schema("customer")
+            end  
+
             it 'responds succesfully json matchers' do
                 get "/customers/#{@customer.id}.json"
                 expect(response).to be_successful
