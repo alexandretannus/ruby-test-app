@@ -119,6 +119,18 @@ RSpec.describe CustomersController, type: :request do
             end
         end
 
+        context '#destroy' do
+            it 'destroy - json' do
+                headers = { "ACCEPT" => "application/json" }
+    
+                customer = Customer.first
+    
+                expect { delete "/customers/#{customer.id}.json", headers: headers }
+                    .to change(Customer, :count).by(-1)
+                
+                expect(response).to have_http_status(:no_content)
+            end
+        end
 
     end
 
