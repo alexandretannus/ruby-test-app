@@ -49,6 +49,8 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+
+  gem 'rspec-json_expectations'
 end
 
 group :development do

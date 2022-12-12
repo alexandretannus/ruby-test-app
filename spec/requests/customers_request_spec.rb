@@ -19,7 +19,24 @@ RSpec.describe CustomersController, type: :request do
                 get customer_path(customer) , params: { :id => customer.id } 
                 expect(response).to have_http_status(:found)
             end
+            
+            it 'responds succesfully json' do
+                get "/customers.json"
+                expect(response).to be_successful
+                expect(response.body).to include_json([
+                    name: "Alexandre Tannus",
+                    email: "alexandre@tannus.com"
+                ])
+            end      
 
+            it 'responds succesfully json matchers' do
+                get "/customers.json"
+                expect(response).to be_successful
+                expect(response.body).to include_json([
+                    name: (be_kind_of String),
+                    email: (be_kind_of String)
+                ])
+            end    
         end
     end
 
@@ -42,6 +59,15 @@ RSpec.describe CustomersController, type: :request do
                 expect(response).to render_template(:show)
             end
 
+            it 'responds succesfully json matchers' do
+                get "/customers/#{@customer.id}.json"
+                expect(response).to be_successful
+                expect(response.body).to include_json(
+                    id: /\d/,
+                    name: (be_kind_of String),
+                    email: (be_kind_of String)
+                )
+            end   
         end
 
         context '#post' do
