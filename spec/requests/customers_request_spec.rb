@@ -93,6 +93,21 @@ RSpec.describe CustomersController, type: :request do
                 post customers_path, as: :json , params: { customer: attributes_for(:customer) } 
                 expect(response.content_type).to eq('application/json')
             end
+
+            it 'create - json' do
+                headers = { "ACCEPT" => "application/json" }
+
+                customer_params = attributes_for(:customer)
+
+                post "/customers.json", params: { customer: customer_params }, headers: headers
+                
+                expect(response).to have_http_status(201)
+                expect(response.body).to include_json(
+                    id: /\d/,
+                    name: customer_params[:name],
+                    email: customer_params[:email]
+                )
+            end
         end
 
 
