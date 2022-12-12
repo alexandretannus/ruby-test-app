@@ -47,6 +47,8 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 4.0'
   gem 'rails-controller-testing'
   gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
 
 group :development do
