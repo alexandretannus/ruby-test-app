@@ -58,7 +58,19 @@ RSpec.describe CustomersController, type: :request do
                     name: (be_kind_of String),
                     email: (be_kind_of String)
                 )
-            end   
+            end  
+            
+            it 'responds succesfully json - rspec puro' do
+                get "/customers/#{@customer.id}.json"
+
+                response_body = JSON.parse(response.body)
+
+                expect(response).to be_successful
+                expect(response_body.fetch("id")).to eq(@customer.id) 
+                expect(response_body.fetch("name")).to be_kind_of(String)
+                expect(response_body.fetch("email")).to be_kind_of(String) 
+
+            end  
         end
 
         context '#post' do
