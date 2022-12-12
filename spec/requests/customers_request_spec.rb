@@ -18,16 +18,7 @@ RSpec.describe CustomersController, type: :request do
                 customer = create(:customer)
                 get customer_path(customer) , params: { :id => customer.id } 
                 expect(response).to have_http_status(:found)
-            end
-            
-            it 'responds succesfully json' do
-                get "/customers.json"
-                expect(response).to be_successful
-                expect(response.body).to include_json([
-                    name: "Alexandre Tannus",
-                    email: "alexandre@tannus.com"
-                ])
-            end      
+            end   
 
             it 'responds succesfully json matchers' do
                 get "/customers.json"
@@ -106,6 +97,24 @@ RSpec.describe CustomersController, type: :request do
                     id: /\d/,
                     name: customer_params[:name],
                     email: customer_params[:email]
+                )
+            end
+        end
+
+        context '#update' do
+            it 'patch - json' do
+                headers = { "ACCEPT" => "application/json" }
+    
+                customer = Customer.first
+                customer.name += " - Atualizado"
+    
+                patch "/customers/#{customer.id}.json", params: { customer: customer.attributes }, headers: headers
+                
+                expect(response).to have_http_status(200)
+                expect(response.body).to include_json(
+                    id: /\d/,
+                    name: customer[:name],
+                    email: customer[:email]
                 )
             end
         end
